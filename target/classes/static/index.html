@@ -1,0 +1,376 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enviro365 Investments | Withdrawal Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen">
+
+    <!-- Navbar -->
+    <header class="bg-emerald-800 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="bg-white p-2 rounded-lg text-emerald-800">
+                    <i class="fa-solid fa-seedling text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-lg leading-tight">Enviro365 Investments</h1>
+                    <p class="text-xs text-emerald-200">Automated Withdrawal Notice Portal</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-3">
+                <label for="investorSelect" class="text-sm font-medium text-emerald-100">Switch Investor:</label>
+                <select id="investorSelect" onchange="loadInvestorPortfolio()"
+                        class="bg-emerald-900 border border-emerald-700 text-white text-sm rounded-lg px-3 py-1.5 focus:ring-2 focus:ring-emerald-400 focus:outline-none">
+                    <option value="1">Sarah Mokoena (Age 71 - Over 65)</option>
+                    <option value="2">Thabo Dlamini (Age 31 - Under 65)</option>
+                    <option value="3">Twisisani Howel Khosa (Age 24 - Under 65)</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+
+        <!-- Notification Banner -->
+        <div id="alertBox" class="hidden p-4 rounded-lg flex items-start justify-between shadow-sm transition-all duration-300">
+            <div class="flex items-center space-x-3">
+                <i id="alertIcon" class="text-lg"></i>
+                <div id="alertMessage" class="text-sm font-medium"></div>
+            </div>
+            <button onclick="dismissAlert()" class="text-slate-400 hover:text-slate-600">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <!-- Investor Info Card -->
+        <section class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <span class="text-xs font-semibold uppercase tracking-wider text-emerald-600">Investor Profile</span>
+                    <h2 id="invFullName" class="text-2xl font-bold text-slate-900 mt-1">Loading profile...</h2>
+                    <p id="invContact" class="text-sm text-slate-500 mt-1"></p>
+                </div>
+                <div class="flex items-center gap-6 bg-slate-50 p-4 rounded-lg border border-slate-100">
+                    <div>
+                        <p class="text-xs text-slate-400 uppercase font-medium">Date of Birth</p>
+                        <p id="invDob" class="text-base font-semibold text-slate-700 mt-0.5">-</p>
+                    </div>
+                    <div class="h-8 w-px bg-slate-200"></div>
+                    <div>
+                        <p class="text-xs text-slate-400 uppercase font-medium">Verified Age</p>
+                        <p id="invAge" class="text-base font-semibold text-slate-700 mt-0.5">-</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Cards Grid -->
+        <section>
+            <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+                <i class="fa-solid fa-wallet text-emerald-600"></i> Investment Portfolio Products
+            </h3>
+            <div id="productsContainer" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Product cards injected via JS -->
+            </div>
+        </section>
+
+        <!-- Form & History Layout -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+            <!-- Withdrawal Form -->
+            <section class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 lg:col-span-1 h-fit">
+                <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-file-invoice-dollar text-emerald-600"></i> New Notice
+                </h3>
+
+                <form id="withdrawalForm" onsubmit="handleWithdrawalSubmit(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Target Product</label>
+                        <select id="formProductSelect" onchange="updateFormRuleDisplay()" required
+                                class="w-full border border-slate-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+                            <option value="">Select a product...</option>
+                        </select>
+                    </div>
+
+                    <div id="productRuleMeta" class="hidden p-3 bg-amber-50 border border-amber-200 rounded-lg text-xs text-amber-800 space-y-1">
+                        <p><strong>Max Allowed (90%):</strong> <span id="metaMax">R0.00</span></p>
+                        <p id="metaAgeWarn" class="text-red-700 hidden font-semibold">⚠️ Age policy: Under 65 retirement lock applies.</p>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Withdrawal Amount (ZAR)</label>
+                        <input type="number" id="formAmount" step="0.01" min="0.01" placeholder="e.g. 15000.00" required
+                               class="w-full border border-slate-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Banking Details</label>
+                        <textarea id="formBanking" rows="2" placeholder="Bank Name, Branch Code, Account #" required
+                                  class="w-full border border-slate-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none"></textarea>
+                    </div>
+
+                    <button type="submit" id="submitBtn"
+                            class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-medium py-2.5 rounded-lg transition text-sm shadow-sm flex justify-center items-center gap-2">
+                        <i class="fa-solid fa-paper-plane"></i> Submit Notice
+                    </button>
+                </form>
+            </section>
+
+            <!-- Withdrawal History & CSV Filter -->
+            <section class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 lg:col-span-2 space-y-4">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b pb-4 border-slate-100">
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                            <i class="fa-solid fa-clock-rotate-left text-emerald-600"></i> Notice History
+                        </h3>
+                        <p class="text-xs text-slate-500">Filter notices or export statement to CSV</p>
+                    </div>
+                    <button onclick="downloadCSV()"
+                            class="bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 shadow-sm transition">
+                        <i class="fa-solid fa-file-csv text-emerald-400"></i> Export CSV
+                    </button>
+                </div>
+
+                <!-- Filters -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-medium text-slate-600 mb-1">Start Date</label>
+                        <input type="date" id="filterStart" onchange="loadWithdrawalHistory()"
+                               class="w-full border border-slate-200 rounded-lg p-2 text-sm focus:ring-1 focus:ring-emerald-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-slate-600 mb-1">End Date</label>
+                        <input type="date" id="filterEnd" onchange="loadWithdrawalHistory()"
+                               class="w-full border border-slate-200 rounded-lg p-2 text-sm focus:ring-1 focus:ring-emerald-500">
+                    </div>
+                </div>
+
+                <!-- Table -->
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm border-collapse">
+                        <thead>
+                            <tr class="bg-slate-50 text-slate-500 text-xs uppercase border-b border-slate-200">
+                                <th class="py-3 px-3">Product</th>
+                                <th class="py-3 px-3">Amount</th>
+                                <th class="py-3 px-3">Before / After</th>
+                                <th class="py-3 px-3">Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="historyTableBody" class="divide-y divide-slate-100">
+                            <tr>
+                                <td colspan="4" class="text-center py-6 text-slate-400">Loading notices...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        let currentInvestor = null;
+        let portfolioProducts = [];
+
+        async function loadInvestorPortfolio() {
+            const investorId = document.getElementById('investorSelect').value;
+            try {
+                const res = await fetch(`/api/investors/${investorId}/portfolio`);
+                if (!res.ok) throw new Error('Failed to load investor profile');
+
+                currentInvestor = await res.json();
+                portfolioProducts = currentInvestor.products;
+
+                // Update Profile Info
+                document.getElementById('invFullName').innerText = currentInvestor.fullName;
+                document.getElementById('invContact').innerText = `${currentInvestor.email} • ${currentInvestor.contactNumber}`;
+                document.getElementById('invDob').innerText = currentInvestor.dateOfBirth;
+                document.getElementById('invAge').innerText = `${currentInvestor.age} years`;
+
+                renderProducts();
+                populateProductDropdown();
+                loadWithdrawalHistory();
+            } catch (err) {
+                showAlert(err.message, 'error');
+            }
+        }
+
+        function renderProducts() {
+            const container = document.getElementById('productsContainer');
+            container.innerHTML = portfolioProducts.map(p => `
+                <div class="border border-slate-200 rounded-xl p-5 bg-white shadow-sm flex flex-col justify-between hover:border-emerald-300 transition">
+                    <div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-semibold px-2.5 py-1 rounded-full ${p.productType === 'RETIREMENT' ? 'bg-indigo-50 text-indigo-700' : 'bg-emerald-50 text-emerald-700'}">
+                                ${p.productType}
+                            </span>
+                            <span class="text-xs text-slate-400">ID: #${p.id}</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-slate-900 mt-3">${p.name}</h4>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-slate-100 flex justify-between items-end">
+                        <div>
+                            <p class="text-xs text-slate-400">Current Balance</p>
+                            <p class="text-xl font-extrabold text-slate-900">R${Number(p.currentBalance).toLocaleString('en-ZA', {minimumFractionDigits: 2})}</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-xs text-slate-400">90% Limit</p>
+                            <p class="text-sm font-semibold text-emerald-600">R${Number(p.maxWithdrawableAmount).toLocaleString('en-ZA', {minimumFractionDigits: 2})}</p>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function populateProductDropdown() {
+            const select = document.getElementById('formProductSelect');
+            select.innerHTML = '<option value="">Select a product...</option>' +
+                portfolioProducts.map(p => `<option value="${p.id}">${p.name} (${p.productType})</option>`).join('');
+            updateFormRuleDisplay();
+        }
+
+        function updateFormRuleDisplay() {
+            const productId = Number(document.getElementById('formProductSelect').value);
+            const metaBox = document.getElementById('productRuleMeta');
+            const ageWarn = document.getElementById('metaAgeWarn');
+            const maxSpan = document.getElementById('metaMax');
+
+            if (!productId) {
+                metaBox.classList.add('hidden');
+                return;
+            }
+
+            const product = portfolioProducts.find(p => p.id === productId);
+            if (product) {
+                metaBox.classList.remove('hidden');
+                maxSpan.innerText = `R${Number(product.maxWithdrawableAmount).toLocaleString('en-ZA', {minimumFractionDigits: 2})}`;
+
+                if (product.productType === 'RETIREMENT' && currentInvestor.age <= 65) {
+                    ageWarn.classList.remove('hidden');
+                } else {
+                    ageWarn.classList.add('hidden');
+                }
+            }
+        }
+
+        async function handleWithdrawalSubmit(e) {
+            e.preventDefault();
+            const productId = Number(document.getElementById('formProductSelect').value);
+            const amount = parseFloat(document.getElementById('formAmount').value);
+            const bankingDetails = document.getElementById('formBanking').value;
+
+            const product = portfolioProducts.find(p => p.id === productId);
+
+            // Client-side Business Rule Validations
+            if (product.productType === 'RETIREMENT' && currentInvestor.age <= 65) {
+                showAlert(`Retirement withdrawal blocked: Investor is ${currentInvestor.age} years old (Policy requires age > 65).`, 'error');
+                return;
+            }
+
+            if (amount > Number(product.currentBalance)) {
+                showAlert(`Amount R${amount.toFixed(2)} exceeds current balance of R${Number(product.currentBalance).toFixed(2)}.`, 'error');
+                return;
+            }
+
+            if (amount > Number(product.maxWithdrawableAmount)) {
+                showAlert(`Amount R${amount.toFixed(2)} exceeds the 90% limit (Max: R${Number(product.maxWithdrawableAmount).toFixed(2)}).`, 'error');
+                return;
+            }
+
+            try {
+                const res = await fetch('/api/withdrawals', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ productId, amount, bankingDetails })
+                });
+
+                const data = await res.json();
+                if (!res.ok) {
+                    throw new Error(data.message || 'Submission failed');
+                }
+
+                showAlert(`Withdrawal of R${amount.toFixed(2)} created successfully!`, 'success');
+                document.getElementById('withdrawalForm').reset();
+                document.getElementById('productRuleMeta').classList.add('hidden');
+
+                // Refresh data
+                await loadInvestorPortfolio();
+            } catch (err) {
+                showAlert(err.message, 'error');
+            }
+        }
+
+        async function loadWithdrawalHistory() {
+            const start = document.getElementById('filterStart').value;
+            const end = document.getElementById('filterEnd').value;
+
+            let url = '/api/withdrawals?';
+            if (start) url += `startDate=${start}&`;
+            if (end) url += `endDate=${end}&`;
+
+            try {
+                const res = await fetch(url);
+                const notices = await res.json();
+                const tbody = document.getElementById('historyTableBody');
+
+                if (notices.length === 0) {
+                    tbody.innerHTML = `<tr><td colspan="4" class="text-center py-6 text-slate-400">No withdrawal notices found.</td></tr>`;
+                    return;
+                }
+
+                tbody.innerHTML = notices.map(n => `
+                    <tr class="hover:bg-slate-50 transition">
+                        <td class="py-3 px-3 font-semibold text-slate-800">${n.productName}</td>
+                        <td class="py-3 px-3 text-red-600 font-bold">-R${Number(n.withdrawalAmount).toLocaleString('en-ZA', {minimumFractionDigits: 2})}</td>
+                        <td class="py-3 px-3 text-xs text-slate-500">
+                            R${Number(n.balanceBefore).toLocaleString('en-ZA', {minimumFractionDigits: 2})} →
+                            <span class="font-medium text-slate-800">R${Number(n.balanceAfter).toLocaleString('en-ZA', {minimumFractionDigits: 2})}</span>
+                        </td>
+                        <td class="py-3 px-3 text-xs text-slate-400">${n.createdAt.replace('T', ' ').substring(0, 19)}</td>
+                    </tr>
+                `).join('');
+            } catch (err) {
+                console.error('Failed to load notices:', err);
+            }
+        }
+
+        function downloadCSV() {
+            const start = document.getElementById('filterStart').value;
+            const end = document.getElementById('filterEnd').value;
+            let url = '/api/withdrawals/export/csv?';
+            if (start) url += `startDate=${start}&`;
+            if (end) url += `endDate=${end}&`;
+            window.location.href = url;
+        }
+
+        function showAlert(message, type) {
+            const box = document.getElementById('alertBox');
+            const icon = document.getElementById('alertIcon');
+            const msg = document.getElementById('alertMessage');
+
+            box.classList.remove('hidden', 'bg-red-50', 'text-red-800', 'border-red-200', 'bg-emerald-50', 'text-emerald-800', 'border-emerald-200');
+            icon.className = '';
+
+            if (type === 'error') {
+                box.classList.add('bg-red-50', 'text-red-800', 'border', 'border-red-200');
+                icon.className = 'fa-solid fa-circle-exclamation text-red-600';
+            } else {
+                box.classList.add('bg-emerald-50', 'text-emerald-800', 'border', 'border-emerald-200');
+                icon.className = 'fa-solid fa-circle-check text-emerald-600';
+            }
+
+            msg.innerText = message;
+        }
+
+        function dismissAlert() {
+            document.getElementById('alertBox').classList.add('hidden');
+        }
+
+        // Initialize on load
+        window.onload = loadInvestorPortfolio;
+    </script>
+</body>
+</html>
