@@ -54,17 +54,27 @@ Access the Application:
 Web Portal: Open http://localhost:8080
 
 H2 Database Console: Open http://localhost:8080/h2-console
-
 JDBC URL: jdbc:h2:mem:enviro365db
-
 User Name: sa
-
 Password: (leave blank)
 
+Savings Product Selection & Live 90% Limit Calculation
 ![Dashboard](screenshots/1.png)
+
+Investor Profile Dashboard & Product Portfolio Overview
 ![Dashboard](screenshots/2.png)
+
+Retirement Product Selection for Eligible Investor (Age > 65)
 ![Dashboard](screenshots/3.png)
+
+Processed Retirement Notice & Atomic Balance Audit Trail
 ![Dashboard](screenshots/4.png)
+
+Enforcement of Under-65 Retirement Policy Lock
 ![Dashboard](screenshots/5.png)
+
+Savings Notice Execution & Multi-Notice History Log
 ![Dashboard](screenshots/6.png)
+
+Exported CSV Statement Opened in Spreadsheet Viewer
 ![Dashboard](screenshots/7.png)
