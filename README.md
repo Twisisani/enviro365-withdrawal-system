@@ -39,7 +39,7 @@ Installation & Execution
 
 1. Clone the repository:
    ```bash
-   git clone [https://github.com/Twisisani/enviro365-withdrawal-system.git](https://github.com/Twisisani/enviro365-withdrawal-system.git)
+   git clone https://github.com/Twisisani/enviro365-withdrawal-system.git (https://github.com/Twisisani/enviro365-withdrawal-system.git)
    cd enviro365-withdrawal-system
 Execute automated unit tests:
 
