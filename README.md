@@ -31,13 +31,13 @@ Full-stack Spring Boot and responsive web interface built for the eTalente Junio
 ## Getting Started
 
 ### Prerequisites
-* **Java Development Kit (JDK):** 17 or higher
-* **Apache Maven:** 3.8+ (or bundled wrapper)
-* **Web Browser:** Any modern browser
+Java Development Kit (JDK):** 17 or higher
+Apache Maven: 3.8+ (or bundled wrapper)
+Web Browser: Any modern browser
 
-### Installation & Execution
+Installation & Execution
 
-1. **Clone the repository:**
+1. Clone the repository:
    ```bash
    git clone [https://github.com/Twisisani/enviro365-withdrawal-system.git](https://github.com/Twisisani/enviro365-withdrawal-system.git)
    cd enviro365-withdrawal-system
@@ -54,8 +54,11 @@ Access the Application:
 Web Portal: Open http://localhost:8080
 
 H2 Database Console: Open http://localhost:8080/h2-console
+
 JDBC URL: jdbc:h2:mem:enviro365db
-User Name: sa
+
+User Name:sa
+
 Password: (leave blank)
 
 Savings Product Selection & Live 90% Limit Calculation
