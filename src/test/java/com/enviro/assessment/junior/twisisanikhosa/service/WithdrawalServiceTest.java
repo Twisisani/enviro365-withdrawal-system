@@ -88,6 +88,7 @@ class WithdrawalServiceTest {
     @DisplayName("Should reject withdrawal when amount exceeds 90% limit")
     void shouldRejectWithdrawal_WhenAmountExceeds90Percent() {
         when(productRepository.findByIdWithInvestor(3L)).thenReturn(Optional.of(savingsProduct));
+
         // Balance is 50,000. 90% is 45,000. Requesting 46,000.
         WithdrawalRequestDto request = new WithdrawalRequestDto(3L, new BigDecimal("46000.00"), "Nedbank Acc: 555666");
 
