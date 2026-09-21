@@ -1,36 +1,70 @@
 # Enviro365 Investments - Automated Withdrawal Notice System
 
-Full-stack Spring Boot and web interface solution built for the eTalente Junior Developer Technical Evaluation.
+Full-stack Spring Boot and responsive web interface built for the eTalente Junior Developer Technical Assessment. The system automates investor withdrawal notices, enforces regulatory and product balance rules, records balance histories before and after transactions, and exports CSV statements.
 
-## Project Overview
-Enviro365 Investments automates client withdrawal notices from investment products (Savings & Retirement), enforces regulatory and business rules, provides real-time audit logs of balances before and after transactions, and supports CSV statement export.
+---
 
 ## Business Rules Enforced
-1. **Retirement Age Verification**: Withdrawals from `RETIREMENT` products are strictly restricted to investors aged > 65 years.
-2. **Total Balance Constraint**: A withdrawal amount cannot exceed the product's current balance.
-3. **90% Balance Limit**: A withdrawal amount cannot exceed 90% of the product's current balance.
-4. **Transaction Integrity**: The product balance is updated atomically upon withdrawal notice generation.
+
+* **Retirement Age Verification:** Withdrawals from `RETIREMENT` products are strictly restricted to investors older than 65 years of age (`age > 65`).
+* **Current Balance Constraint:** A withdrawal amount cannot exceed the product's current balance.
+* **90% Maximum Limit:** An investor cannot withdraw more than 90% of the product's current balance in a single notice.
+* **Transactional Balance Integrity:** Product balances update atomically upon withdrawal submission, preserving an audit trail of `balanceBefore` and `balanceAfter`.
+
+---
 
 ## Technical Architecture & Rubric Coverage
-- **Package**: `com.enviro.assessment.junior.twisisanikhosa`
-- **Backend**: Spring Boot 3.2.5, Java 17+, Spring Data JPA, Jakarta Bean Validation.
-- **Database**: In-memory H2 database with automatic seed data.
-- **DTO Architecture**: Immutable Java records for decoupling entities from the REST API layer.
-- **Global Error Handling**: `@RestControllerAdvice` mapping validation constraints and domain exceptions to standardized JSON error payloads.
-- **Automated Testing**: JUnit 5 + Mockito unit tests validating business rule enforcement and boundary conditions.
-- **Frontend**: Responsive Single-Page Application (HTML5, Tailwind CSS, JavaScript) served directly from `src/main/resources/static`.
+
+* **Package Structure:** `com.enviro.assessment.junior.twisisanikhosa`
+* **Backend:** Java 17, Spring Boot 3.2.5, Spring Data JPA, Jakarta Bean Validation.
+* **Database:** In-memory H2 database (`jdbc:h2:mem:enviro365db`) initialized with seed data.
+* **Frontend:** Responsive Single-Page Application (HTML5, Tailwind CSS, JavaScript) served from `src/main/resources/static/index.html`.
+* **Advanced Features Implemented (All 5 of 5):**
+  * **Global Exception Handling:** `@RestControllerAdvice` converting domain and validation errors into structured JSON error models (`ApiErrorResponse`).
+  * **DTO Layer:** Immutable Java `record` implementations (`PortfolioResponseDto`, `WithdrawalRequestDto`, `WithdrawalResponseDto`, `ProductDto`).
+  * **Input Validation:** Jakarta constraints (`@NotNull`, `@DecimalMin`, `@NotBlank`) enforced at the controller boundary.
+  * **Unit Tests:** JUnit 5 and Mockito suite covering boundary conditions, age restrictions, and limit calculations.
+  * **UI Validation:** Real-time client-side checks and warnings prior to form submission.
 
 ---
 
 ## Getting Started
 
 ### Prerequisites
-- Java Development Kit (JDK) 17 or higher
-- Apache Maven 3.8+ (or use the Maven wrapper)
-- A modern web browser
+* **Java Development Kit (JDK):** 17 or higher
+* **Apache Maven:** 3.8+ (or bundled wrapper)
+* **Web Browser:** Any modern browser
 
-### Running the Application
-1. Clone the repository:
+### Installation & Execution
+
+1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/yourusername/enviro365-withdrawal-system.git](https://github.com/yourusername/enviro365-withdrawal-system.git)
+   git clone [https://github.com/Twisisani/enviro365-withdrawal-system.git](https://github.com/Twisisani/enviro365-withdrawal-system.git)
    cd enviro365-withdrawal-system
+Execute automated unit tests:
+
+Bash
+mvn clean test
+Start the application:
+
+Bash
+mvn spring-boot:run
+Access the Application:
+
+Web Portal: Open http://localhost:8080
+
+H2 Database Console: Open http://localhost:8080/h2-console
+
+JDBC URL: jdbc:h2:mem:enviro365db
+
+User Name: sa
+
+Password: (leave blank)
+
+![Dashboard](screenshots/1.png)
+![Dashboard](screenshots/2.png)
+![Dashboard](screenshots/3.png)
+![Dashboard](screenshots/4.png)
+![Dashboard](screenshots/5.png)
+![Dashboard](screenshots/6.png)
+![Dashboard](screenshots/7.png)
