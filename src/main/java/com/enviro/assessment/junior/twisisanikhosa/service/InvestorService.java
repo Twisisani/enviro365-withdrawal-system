@@ -51,4 +51,11 @@ public class InvestorService {
                 productDtos
         );
     }
+
+    @Transactional(readOnly = true)
+    public List<PortfolioResponseDto> getAllInvestors() {
+        return investorRepository.findAll().stream()
+                .map(investor -> getInvestorPortfolio(investor.getId()))
+                .toList();
+    }
 }

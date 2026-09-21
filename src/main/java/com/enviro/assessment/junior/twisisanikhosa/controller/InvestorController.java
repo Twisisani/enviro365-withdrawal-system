@@ -5,6 +5,8 @@ import com.enviro.assessment.junior.twisisanikhosa.service.InvestorService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/investors")
 public class InvestorController {
@@ -18,5 +20,10 @@ public class InvestorController {
     @GetMapping("/{id}/portfolio")
     public ResponseEntity<PortfolioResponseDto> getInvestorPortfolio(@PathVariable Long id) {
         return ResponseEntity.ok(investorService.getInvestorPortfolio(id));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<PortfolioResponseDto>> getAllInvestors() {
+        return ResponseEntity.ok(investorService.getAllInvestors());
     }
 }
