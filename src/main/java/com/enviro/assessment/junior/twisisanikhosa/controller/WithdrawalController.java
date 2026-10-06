@@ -20,10 +20,12 @@ public class WithdrawalController {
 
     private final WithdrawalService withdrawalService;
 
+    // Constructor with dependency injection
     public WithdrawalController(WithdrawalService withdrawalService) {
         this.withdrawalService = withdrawalService;
     }
 
+    // POST create new withdrawal notice
     @PostMapping
     public ResponseEntity<WithdrawalResponseDto> createWithdrawal(
             @Valid @RequestBody WithdrawalRequestDto requestDto) {
@@ -31,6 +33,7 @@ public class WithdrawalController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
+    // GET withdrawal notices with optional filters
     @GetMapping
     public ResponseEntity<List<WithdrawalResponseDto>> getWithdrawals(
             @RequestParam(required = false) Long productId,
@@ -39,6 +42,7 @@ public class WithdrawalController {
         return ResponseEntity.ok(withdrawalService.getWithdrawalNotices(productId, startDate, endDate));
     }
 
+    // GET export withdrawals to CSV file
     @GetMapping("/export/csv")
     public void exportCsv(
             @RequestParam(required = false) Long productId,

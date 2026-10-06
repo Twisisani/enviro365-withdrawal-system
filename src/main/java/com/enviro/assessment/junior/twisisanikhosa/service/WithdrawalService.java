@@ -27,21 +27,23 @@ public class WithdrawalService {
     private final ProductRepository productRepository;
     private final WithdrawalNoticeRepository withdrawalNoticeRepository;
 
+    // Constructor with dependency injection
     public WithdrawalService(ProductRepository productRepository,
                              WithdrawalNoticeRepository withdrawalNoticeRepository) {
         this.productRepository = productRepository;
         this.withdrawalNoticeRepository = withdrawalNoticeRepository;
     }
 
+    // Create withdrawal notice with business rule validations and balance update
     @Transactional
     public WithdrawalResponseDto createWithdrawalNotice(WithdrawalRequestDto request) {
         Product product = productRepository.findByIdWithInvestor(request.productId())
                 .orElseThrow(() -> new ResourceNotFoundException("Product not found with ID: " + request.productId()));
 
-        // Business Rule 1: Retirement product age check (> 65)
+        // Rule 1: Retirement products require investor age > 65
         if (product.getProductType() == ProductType.RETIREMENT) {
             int age = product.getInvestor().getAge();
-            if (age <= 65) {
+            if (age <= 65) {        
                 throw new InvalidWithdrawalException(
                         "Retirement withdrawals are only allowed if the investor's age is greater than 65. Current age: " + age
                 );
@@ -51,14 +53,14 @@ public class WithdrawalService {
         BigDecimal requestedAmount = request.amount();
         BigDecimal currentBalance = product.getCurrentBalance();
 
-        // Business Rule 2: Cannot exceed current balance
+        // Rule 2: Withdrawal cannot exceed current balance
         if (requestedAmount.compareTo(currentBalance) > 0) {
             throw new InvalidWithdrawalException(
                     "Withdrawal amount (R" + requestedAmount + ") exceeds current product balance (R" + currentBalance + ")"
             );
         }
 
-        // Business Rule 3: Cannot exceed 90% of current balance
+        // Rule 3: Withdrawal cannot exceed 90% of balance
         BigDecimal maxAllowed = currentBalance.multiply(NINETY_PERCENT).setScale(2, RoundingMode.HALF_UP);
         if (requestedAmount.compareTo(maxAllowed) > 0) {
             throw new InvalidWithdrawalException(
@@ -66,11 +68,12 @@ public class WithdrawalService {
             );
         }
 
-        // Atomic balance calculation & persistence
+        // Update balance and persist
         BigDecimal newBalance = currentBalance.subtract(requestedAmount).setScale(2, RoundingMode.HALF_UP);
         product.setCurrentBalance(newBalance);
         productRepository.save(product);
 
+        // Create and save withdrawal notice
         WithdrawalNotice notice = new WithdrawalNotice(
                 requestedAmount,
                 currentBalance,
@@ -84,6 +87,7 @@ public class WithdrawalService {
         return mapToDto(savedNotice);
     }
 
+    // Retrieve withdrawal notices with optional product and date range filters
     @Transactional(readOnly = true)
     public List<WithdrawalResponseDto> getWithdrawalNotices(Long productId, LocalDate startDate, LocalDate endDate) {
         LocalDateTime start = (startDate != null) ? startDate.atStartOfDay() : null;
@@ -95,13 +99,16 @@ public class WithdrawalService {
                 .toList();
     }
 
+    // Export withdrawal notices to CSV format
     @Transactional(readOnly = true)
     public void exportWithdrawalsCsv(Long productId, LocalDate startDate, LocalDate endDate, PrintWriter writer) {
         List<WithdrawalResponseDto> notices = getWithdrawalNotices(productId, startDate, endDate);
 
+        // Write CSV header
         writer.println("Notice ID,Product Name,Withdrawal Amount,Balance Before,Balance After,Banking Details,Date Created");
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
+        // Write CSV rows
         for (WithdrawalResponseDto dto : notices) {
             writer.printf("\"%d\",\"%s\",\"R%.2f\",\"R%.2f\",\"R%.2f\",\"%s\",\"%s\"%n",
                     dto.id(),
@@ -116,6 +123,7 @@ public class WithdrawalService {
         writer.flush();
     }
 
+    // Convert WithdrawalNotice entity to response DTO
     private WithdrawalResponseDto mapToDto(WithdrawalNotice notice) {
         return new WithdrawalResponseDto(
                 notice.getId(),

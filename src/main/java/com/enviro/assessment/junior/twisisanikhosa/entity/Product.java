@@ -21,6 +21,7 @@ public class Product {
     @Column(nullable = false, precision = 15, scale = 2)
     private BigDecimal currentBalance;
 
+    // Relationship to investor
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "investor_id", nullable = false)
     private Investor investor;
@@ -34,6 +35,7 @@ public class Product {
         this.investor = investor;
     }
 
+    // Getters and setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
     public ProductType getProductType() { return productType; }

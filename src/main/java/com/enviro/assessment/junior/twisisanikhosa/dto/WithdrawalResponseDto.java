@@ -3,6 +3,7 @@ package com.enviro.assessment.junior.twisisanikhosa.dto;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+// Response DTO for withdrawal notice with transaction details
 public record WithdrawalResponseDto(
     Long id,
     Long productId,

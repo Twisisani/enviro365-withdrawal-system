@@ -12,13 +12,14 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
+// Initialize database with sample investor and product data on startup
 @Configuration
 public class DataLoader {
 
     @Bean
     CommandLineRunner initDatabase(InvestorRepository investorRepository) {
         return args -> {
-            // Investor 1: Senior citizen (Eligible for retirement withdrawals, age > 65)[cite: 1]
+            // Senior investor (age 69 - eligible for retirement withdrawals)
             Investor senior = new Investor(
                     "Sarah", "Mokoena", "sarah.Mokoena@enviro365.co.za", "+27 66 793 7018", LocalDate.of(1955, 4, 12)
             );
@@ -27,7 +28,7 @@ public class DataLoader {
             senior.setProducts(List.of(seniorSavings, seniorRetirement));
             investorRepository.save(senior);
 
-            // Investor 2: Young professional (Ineligible for retirement withdrawals, age <= 65)[cite: 1]
+            // Young investor 1 (age 30 - ineligible for retirement withdrawals)
             Investor junior = new Investor(
                     "Thabo", "Dlamini", "thabo.dlamini@enviro365.co.za", "+27 71 987 6543", LocalDate.of(1994, 9, 23)
             );
@@ -36,6 +37,7 @@ public class DataLoader {
             junior.setProducts(List.of(juniorSavings, juniorRetirement));
             investorRepository.save(junior);
 
+            // Young investor 2 (age 24 - ineligible for retirement withdrawals)
             Investor twisisani = new Investor(
                     "Twisisani Howel", "Khosa", "twisisani.khosa@enviro365.co.za", "+27 71 519 1463", LocalDate.of(2001, 10, 13));
             Product twisisaniSavings = new Product(ProductType.SAVINGS, "Flexible Wealth Saver", new BigDecimal("62000.00"), twisisani);

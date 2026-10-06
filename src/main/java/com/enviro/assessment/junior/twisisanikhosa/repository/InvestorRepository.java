@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.Optional;
 
 public interface InvestorRepository extends JpaRepository<Investor, Long> {
+    // Fetch investor with all products (eager load to avoid N+1 queries)
     @Query("SELECT i FROM Investor i LEFT JOIN FETCH i.products WHERE i.id = :id")
     Optional<Investor> findByIdWithProducts(@Param("id") Long id);
 }

@@ -11,7 +11,7 @@ import java.util.List;
 public class Investor {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)     
     private Long id;
 
     @Column(nullable = false)
@@ -29,6 +29,7 @@ public class Investor {
     @Column(nullable = false)
     private LocalDate dateOfBirth;
 
+    // Relationship to products (cascade delete orphaned products)
     @OneToMany(mappedBy = "investor", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Product> products = new ArrayList<>();
 
@@ -42,10 +43,12 @@ public class Investor {
         this.dateOfBirth = dateOfBirth;
     }
 
+    // Calculate current age from date of birth
     public int getAge() {
         return Period.between(this.dateOfBirth, LocalDate.now()).getYears();
     }
 
+    // Getters and setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
     public String getFirstName() { return firstName; }

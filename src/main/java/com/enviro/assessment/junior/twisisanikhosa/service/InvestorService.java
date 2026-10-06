@@ -17,15 +17,18 @@ public class InvestorService {
 
     private final InvestorRepository investorRepository;
 
+    // Constructor with dependency injection
     public InvestorService(InvestorRepository investorRepository) {
         this.investorRepository = investorRepository;
     }
 
+    // Retrieve investor portfolio including products with calculated max withdrawal limits
     @Transactional(readOnly = true)
     public PortfolioResponseDto getInvestorPortfolio(Long investorId) {
         Investor investor = investorRepository.findByIdWithProducts(investorId)
                 .orElseThrow(() -> new ResourceNotFoundException("Investor not found with ID: " + investorId));
 
+        // Calculate 90% max withdrawal for each product
         List<ProductDto> productDtos = investor.getProducts().stream()
                 .map(product -> {
                     BigDecimal maxAllowed = product.getCurrentBalance()
@@ -52,6 +55,7 @@ public class InvestorService {
         );
     }
 
+    // Retrieve portfolios for all investors
     @Transactional(readOnly = true)
     public List<PortfolioResponseDto> getAllInvestors() {
         return investorRepository.findAll().stream()

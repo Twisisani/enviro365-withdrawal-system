@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import java.util.HashMap;
 import java.util.Map;
 
+// Global exception handler for consistent error responses
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
+    // Handle resource not found (404)
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<ApiErrorResponse> handleNotFound(ResourceNotFoundException ex) {
         ApiErrorResponse response = new ApiErrorResponse(
@@ -24,6 +26,7 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
     }
 
+    // Handle invalid withdrawal (400)
     @ExceptionHandler(InvalidWithdrawalException.class)
     public ResponseEntity<ApiErrorResponse> handleInvalidWithdrawal(InvalidWithdrawalException ex) {
         ApiErrorResponse response = new ApiErrorResponse(
@@ -34,6 +37,7 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
     }
 
+    // Handle validation errors (400)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ApiErrorResponse> handleValidationErrors(MethodArgumentNotValidException ex) {
         Map<String, String> errors = new HashMap<>();
@@ -50,6 +54,7 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
     }
 
+    // Handle all other exceptions (500)
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ApiErrorResponse> handleGeneralException(Exception ex) {
         ApiErrorResponse response = new ApiErrorResponse(
