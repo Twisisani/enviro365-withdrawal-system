@@ -69,7 +69,6 @@ H2 Database Console: Open http://localhost:8080/h2-console
 
 JDBC URL: jdbc:h2:mem:enviro365db
 
-<<<<<<< HEAD
 User Name:sa
 
 Password: (leave blank)
@@ -94,16 +93,6 @@ Savings Notice Execution & Multi-Notice History Log
 
 Exported CSV Statement Opened in Spreadsheet Viewer
 ![Dashboard](screenshots/7.png)
-=======
-User Name: sa
 
-Password: (leave blank)
 
-![Dashboard](screenshots/1.png)
-![Dashboard](screenshots/2.png)
-![Dashboard](screenshots/3.png)
-![Dashboard](screenshots/4.png)
-![Dashboard](screenshots/5.png)
-![Dashboard](screenshots/6.png)
-![Dashboard](screenshots/7.png)
->>>>>>> bb01a7df50aa577d5d1a093463a85a66a5d9afc6
+
