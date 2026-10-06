@@ -2,7 +2,11 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.enviro.assessment.junior.twisisanikhosa.service.WithdrawalServiceTest" time="2.417" tests="4" errors="0" skipped="0" failures="0">
+=======
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.enviro.assessment.junior.twisisanikhosa.service.WithdrawalServiceTest" time="1.707" tests="4" errors="0" skipped="0" failures="0">
+>>>>>>> 2415324df477ad023e9ca2d0637b6f12267fcbbf
 =======
 <testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.enviro.assessment.junior.twisisanikhosa.service.WithdrawalServiceTest" time="1.707" tests="4" errors="0" skipped="0" failures="0">
 >>>>>>> 2415324df477ad023e9ca2d0637b6f12267fcbbf
@@ -34,6 +38,9 @@
     <property name="sun.java.command" value="C:\Users\BagCh\AppData\Local\Temp\surefire17516751265122678861\surefirebooter-20260921151843131_3.jar C:\Users\BagCh\AppData\Local\Temp\surefire17516751265122678861 2026-09-21T15-18-42_860-jvmRun1 surefire-20260921151843131_1tmp surefire_0-20260921151843131_2tmp"/>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 2415324df477ad023e9ca2d0637b6f12267fcbbf
+=======
 >>>>>>> 2415324df477ad023e9ca2d0637b6f12267fcbbf
 =======
 >>>>>>> 2415324df477ad023e9ca2d0637b6f12267fcbbf
@@ -56,7 +63,11 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <property name="surefire.real.class.path" value="C:\Users\BagCh\AppData\Local\Temp\surefire10502460772591334975\surefirebooter-20261006084359295_3.jar"/>
+=======
+    <property name="surefire.real.class.path" value="C:\Users\BagCh\AppData\Local\Temp\surefire17516751265122678861\surefirebooter-20260921151843131_3.jar"/>
+>>>>>>> 2415324df477ad023e9ca2d0637b6f12267fcbbf
 =======
     <property name="surefire.real.class.path" value="C:\Users\BagCh\AppData\Local\Temp\surefire17516751265122678861\surefirebooter-20260921151843131_3.jar"/>
 >>>>>>> 2415324df477ad023e9ca2d0637b6f12267fcbbf
@@ -88,7 +99,11 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <property name="java.library.path" value="C:\Program Files\Java\jdk-21.0.12.1\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\VC\VCPackages;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer;C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\bin\Roslyn;C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\FSharp\Tools;C:\Program Files\Microsoft Visual Studio\2022\Community\Team Tools\DiagnosticsHub\Collector;C:\Program Files\Microsoft Visual Studio\2022\Community\\MSBuild\Current\Bin\amd64;C:\Windows\Microsoft.NET\Framework\v4.0.30319;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Tools\;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\Python39\Scripts\;C:\Program Files\Python39\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Program Files (x86)\dotnet\;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\MongoDB\mongosh-2.5.0-win32-x64\bin;C:\Users\BagCh\Documents\ffmpeg-7.1.1;C:\Users\BagCh\Documents\ffmpeg-2025-05-05-git-f4e72eb5a3-essentials_build\bin;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\Microsoft SQL Server\170\Tools\Binn\;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\Git\cmd;C:\Users\BagCh\AppData\Local\Microsoft\WindowsApps;C:\Users\BagCh\AppData\Roaming\npm;C:\Users\BagCh\.dotnet\tools;C:\Users\BagCh\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\BagCh\AppData\Local\Kingsoft\WPS Office\12.1.0.27458\clitool;C:\Users\BagCh\apache-maven-3.9.9\bin;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\VC\Linux\bin\ConnectionManagerExe;."/>
+=======
+    <property name="java.library.path" value="C:\Program Files\Eclipse Adoptium\jdk-17.0.20.101-hotspot\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\VC\VCPackages;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer;C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\bin\Roslyn;C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\FSharp\Tools;C:\Program Files\Microsoft Visual Studio\2022\Community\Team Tools\DiagnosticsHub\Collector;C:\Program Files (x86)\Windows Kits\10\bin\10.0.26100.0\\x86;C:\Program Files (x86)\Windows Kits\10\bin\\x86;C:\Program Files\Microsoft Visual Studio\2022\Community\\MSBuild\Current\Bin\amd64;C:\Windows\Microsoft.NET\Framework\v4.0.30319;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Tools\;C:\Program Files\Eclipse Adoptium\jdk-17.0.20.101-hotspot\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\Python39\Scripts\;C:\Program Files\Python39\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Program Files (x86)\dotnet\;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\MongoDB\mongosh-2.5.0-win32-x64\bin;C:\Users\BagCh\Documents\ffmpeg-7.1.1;C:\Users\BagCh\Documents\ffmpeg-2025-05-05-git-f4e72eb5a3-essentials_build\bin;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\Microsoft SQL Server\170\Tools\Binn\;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\Git\cmd;C:\Users\BagCh\AppData\Local\Microsoft\WindowsApps;C:\Users\BagCh\AppData\Roaming\npm;C:\Users\BagCh\.dotnet\tools;C:\Users\BagCh\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\BagCh\AppData\Local\Kingsoft\WPS Office\12.1.0.27458\clitool;C:\Users\BagCh\apache-maven-3.9.9\bin;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\VC\Linux\bin\ConnectionManagerExe;."/>
+>>>>>>> 2415324df477ad023e9ca2d0637b6f12267fcbbf
 =======
     <property name="java.library.path" value="C:\Program Files\Eclipse Adoptium\jdk-17.0.20.101-hotspot\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\VC\VCPackages;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer;C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\bin\Roslyn;C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\FSharp\Tools;C:\Program Files\Microsoft Visual Studio\2022\Community\Team Tools\DiagnosticsHub\Collector;C:\Program Files (x86)\Windows Kits\10\bin\10.0.26100.0\\x86;C:\Program Files (x86)\Windows Kits\10\bin\\x86;C:\Program Files\Microsoft Visual Studio\2022\Community\\MSBuild\Current\Bin\amd64;C:\Windows\Microsoft.NET\Framework\v4.0.30319;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Tools\;C:\Program Files\Eclipse Adoptium\jdk-17.0.20.101-hotspot\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\Python39\Scripts\;C:\Program Files\Python39\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Program Files (x86)\dotnet\;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\MongoDB\mongosh-2.5.0-win32-x64\bin;C:\Users\BagCh\Documents\ffmpeg-7.1.1;C:\Users\BagCh\Documents\ffmpeg-2025-05-05-git-f4e72eb5a3-essentials_build\bin;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\Microsoft SQL Server\170\Tools\Binn\;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\Git\cmd;C:\Users\BagCh\AppData\Local\Microsoft\WindowsApps;C:\Users\BagCh\AppData\Roaming\npm;C:\Users\BagCh\.dotnet\tools;C:\Users\BagCh\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\BagCh\AppData\Local\Kingsoft\WPS Office\12.1.0.27458\clitool;C:\Users\BagCh\apache-maven-3.9.9\bin;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\VC\Linux\bin\ConnectionManagerExe;."/>
 >>>>>>> 2415324df477ad023e9ca2d0637b6f12267fcbbf
@@ -108,6 +123,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   <testcase name="shouldRejectWithdrawal_WhenAmountExceeds90Percent" classname="com.enviro.assessment.junior.twisisanikhosa.service.WithdrawalServiceTest" time="2.28">
     <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (C:\Users\BagCh\.m2\repository\net\bytebuddy\byte-buddy-agent\1.14.13\byte-buddy-agent-1.14.13.jar)
 WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
@@ -117,6 +133,11 @@ WARNING: Dynamic loading of agents will be disallowed by default in a future rel
   </testcase>
   <testcase name="shouldProcessWithdrawalSuccessfully_WhenValid" classname="com.enviro.assessment.junior.twisisanikhosa.service.WithdrawalServiceTest" time="0.036"/>
   <testcase name="shouldRejectWithdrawal_WhenAmountExceedsBalance" classname="com.enviro.assessment.junior.twisisanikhosa.service.WithdrawalServiceTest" time="0.008"/>
+=======
+  <testcase name="shouldRejectWithdrawal_WhenAmountExceeds90Percent" classname="com.enviro.assessment.junior.twisisanikhosa.service.WithdrawalServiceTest" time="1.616"/>
+  <testcase name="shouldProcessWithdrawalSuccessfully_WhenValid" classname="com.enviro.assessment.junior.twisisanikhosa.service.WithdrawalServiceTest" time="0.021"/>
+  <testcase name="shouldRejectWithdrawal_WhenAmountExceedsBalance" classname="com.enviro.assessment.junior.twisisanikhosa.service.WithdrawalServiceTest" time="0.007"/>
+>>>>>>> 2415324df477ad023e9ca2d0637b6f12267fcbbf
 =======
   <testcase name="shouldRejectWithdrawal_WhenAmountExceeds90Percent" classname="com.enviro.assessment.junior.twisisanikhosa.service.WithdrawalServiceTest" time="1.616"/>
   <testcase name="shouldProcessWithdrawalSuccessfully_WhenValid" classname="com.enviro.assessment.junior.twisisanikhosa.service.WithdrawalServiceTest" time="0.021"/>

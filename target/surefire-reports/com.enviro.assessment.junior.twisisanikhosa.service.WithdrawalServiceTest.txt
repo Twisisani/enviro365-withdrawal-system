@@ -4,7 +4,11 @@ Test set: com.enviro.assessment.junior.twisisanikhosa.service.WithdrawalServiceT
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.417 s -- in com.enviro.assessment.junior.twisisanikhosa.service.WithdrawalServiceTest
+=======
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.707 s -- in com.enviro.assessment.junior.twisisanikhosa.service.WithdrawalServiceTest
+>>>>>>> 2415324df477ad023e9ca2d0637b6f12267fcbbf
 =======
 Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.707 s -- in com.enviro.assessment.junior.twisisanikhosa.service.WithdrawalServiceTest
 >>>>>>> 2415324df477ad023e9ca2d0637b6f12267fcbbf
